@@ -8,9 +8,11 @@ import {TooltipModule} from "primeng/tooltip";
 import {DynamicDialogModule} from "primeng/dynamicdialog";
 import {ButtonModule} from "primeng/button";
 import {SidebarModule} from "primeng/sidebar";
+import { LandingComponent } from "./pages/landing/landing.component";
+import { LoginComponent } from "./pages/login/login.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [LandingComponent, LoginComponent],
   imports: [
     CommonModule,
   ],
