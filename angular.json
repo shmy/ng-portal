@@ -31,7 +31,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": []
           },
@@ -127,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "ng-portal"
+  "defaultProject": "ng-portal",
+  "cli": {
+    "analytics": "b539202d-601b-4b7b-be11-e018504bc307"
+  }
 }
