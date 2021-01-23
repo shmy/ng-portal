@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {
   HttpEvent,
   HttpHandler,
-  HttpHeaders,
   HttpInterceptor,
   HttpRequest,
   HttpResponse,
@@ -33,18 +32,21 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
+    const request = req.clone({
       url: this.getFullUrl(req.url),
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
+      setHeaders: {
+        "Content-Type": "application/json;charset=utf-8",
         Authorization: "Bearer this is token"
-      })
+      }
     });
     return next.handle(req).pipe(
       timeout(20000),
       retry(2),
       filter((event) => event instanceof HttpResponse),
-      tap((event) => console.log("[TokenInterceptor]", req.url, req.method, (event as HttpResponse<any>).body)),
+      tap((event) => console.log("[TokenInterceptor]", request.url, request.method, (event as HttpResponse<any>).body)),
+      map(event => {
+        return (event as HttpResponse<any>).body.data;
+      }),
       catchError((error: any, caught) => {
         throw error;
       })

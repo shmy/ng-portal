@@ -8,7 +8,6 @@ import {
   TranslateModule,
   TranslateService
 } from "@ngx-translate/core";
-import {HttpClientModule} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {LangEnum} from "./shared/enums/lang.enum";
 import {SharedModule} from "./shared/shared.module";
@@ -30,7 +29,6 @@ class CustomTranslateLoader implements TranslateLoader {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

@@ -14,4 +14,5 @@ import {SharedModule} from "../../shared/shared.module";
     SharedModule.forRoot()
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {
+}

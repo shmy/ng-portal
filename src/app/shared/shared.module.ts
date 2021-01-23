@@ -12,12 +12,20 @@ import {httpInterceptorProviders} from "./interceptors";
 import {HttpClientModule} from "@angular/common/http";
 import {routeReuseStrategies} from "./route-reuse-strategies";
 import {RouterModule} from "@angular/router";
+import {VarDirective} from "./directives/var.directive";
+import {UserService} from "./services/user.service";
 
 @NgModule({
-  declarations: [LandingComponent, LoginComponent, NotFoundComponent],
+  declarations: [
+    LandingComponent,
+    LoginComponent,
+    NotFoundComponent,
+    VarDirective
+  ],
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
@@ -39,6 +47,7 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         LogService,
+        UserService,
         ...httpInterceptorProviders,
         ...routeReuseStrategies,
       ]

@@ -1,4 +1,21 @@
-
+[ ] 动态路由/权限拦截
+[ ] 动态菜单/权限拦截
+[x] 全局Context UserInfo
+[ ] qier-progress
+[ ] 登录/登出
+[x] request/response拦截
+[ ] 面包屑
+[ ] lucySheet
+[ ] 全屏
+[ ] 异常收集器
+[ ] 主题定制
+[ ] 图表
+[x] 路由分块懒加载
+[x] http 状态封装
+[ ] AuthService
+[ ] 路由守卫
+[x] 路由恢复
+[ ] 动态modal
 
 
 # NgPortal

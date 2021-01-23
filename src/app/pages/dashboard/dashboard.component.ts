@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: "app-dashboard",
@@ -25,9 +26,13 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.userService.getInitializeUserService()
+      .subscribe(e => {
+      console.log(e);
+    }, e => console.log(e), () => {console.log("complete");});
   }
 }
