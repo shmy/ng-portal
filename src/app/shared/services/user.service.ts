@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin, Observable, of} from "rxjs";
 import {map, tap} from "rxjs/operators";
+import { mock } from "mockjs";
 
 interface LoginParams {
   username: string;
@@ -50,12 +51,18 @@ export class UserService {
   }
 
   getUserInfoService(): Observable<UserInfo> {
-    return this.http.get<UserInfo>("/api/user/getInfo");
-    // return of({});
+    return of(mock({
+      username: "@cname",
+      token: "@guid"
+    }));
   }
 
   getUserAccessCodeService(): Observable<string[]> {
-    return this.http.get<string[]>("/api/user/getAccessCode");
-    // return of([]);
+    return of(mock([
+      "DASHBOARD_LOOKUP",
+      "POST_LOOKUP",
+      "APPLICATION_LOOKUP",
+      "DASHBOARD_LOGOUT",
+    ]));
   }
 }
