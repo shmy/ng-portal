@@ -26,7 +26,7 @@ class CustomTranslateLoader implements TranslateLoader {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+.side-menu-item-wrapper {
+  height: 40px;
+  line-height: 40px;
+
+
+}
+
+.side-menu-item {
+  text-indent: 20px;
+  &:hover {
+    background-color: red;
+  }
+
+}
+
+.sub-menu {
+  height: 0;
+  overflow: hidden;
+  transition: height .3s;
+  &.is-open {
+    height: auto;
+    overflow: visible;
+  }
+}
