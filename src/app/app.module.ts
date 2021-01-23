@@ -15,7 +15,6 @@ import {SharedModule} from "./shared/shared.module";
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {fromPromise} from "rxjs/internal-compatibility";
-import I18nDefinition from "./i18n/definition";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 class CustomTranslateLoader implements TranslateLoader {

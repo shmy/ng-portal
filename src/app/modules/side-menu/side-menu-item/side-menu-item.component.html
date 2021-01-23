@@ -1,7 +1,0 @@
-<li class="side-menu-item-wrapper" *ngIf="menu !== null">
-  <div class="side-menu-item" (click)="isOpen = !isOpen">{{menu.label}}</div>
-  <div class="sub-menu" [ngClass]="{'is-open': isOpen}">
-    <app-side-menu [menus]="menu.children"></app-side-menu>
-  </div>
-</li>
-

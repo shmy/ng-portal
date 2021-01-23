@@ -6,10 +6,12 @@ import {ButtonModule} from "primeng/button";
 import {LandingComponent} from "./pages/landing/landing.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
-import {RouterModule} from "@angular/router";
 import {InputTextModule} from "primeng/inputtext";
 import {LogService} from "./services/log.service";
-import {SideMenuModule} from "../modules/side-menu/side-menu.module";
+import {httpInterceptorProviders} from "./interceptors";
+import {HttpClientModule} from "@angular/common/http";
+import {routeReuseStrategies} from "./route-reuse-strategies";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [LandingComponent, LoginComponent, NotFoundComponent],
@@ -25,19 +27,21 @@ import {SideMenuModule} from "../modules/side-menu/side-menu.module";
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    HttpClientModule,
     ButtonModule,
     InputTextModule,
-    SideMenuModule,
   ],
-  providers: [
-    LogService
-  ]
+
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: [],
+      providers: [
+        LogService,
+        ...httpInterceptorProviders,
+        ...routeReuseStrategies,
+      ]
     };
   }
 

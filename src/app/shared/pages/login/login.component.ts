@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {LogService} from "../../services/log.service";
 import {Router} from "@angular/router";
 
@@ -13,7 +12,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    // private http: HttpClient,
     private log: LogService,
     private router: Router
   ) {
@@ -23,7 +21,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  formGroup: FormGroup;
+  public formGroup: FormGroup;
 
   ngOnInit(): void {
   }
