@@ -1,5 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {UserService} from "../../shared/services/user.service";
+import {MenuItem} from "primeng/api";
+import {OverlayPanel} from "primeng/overlaypanel";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-dashboard",
@@ -7,32 +10,35 @@ import {UserService} from "../../shared/services/user.service";
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  menus = [
+  @ViewChild("op", {static: true}) private op!: OverlayPanel;
+  profileMenus: MenuItem[] = [
     {
-      label: "系统管理"
+      label: "个人中心",
+      icon: "pi pi-fw pi-user",
+      command: () => {
+        this.op.hide();
+        this.router.navigateByUrl("/profile", {replaceUrl: false});
+      }
     },
     {
-      label: "系统管理"
+      label: "退出登录",
+      icon: "pi pi-fw pi-plus",
+      command: () => {
+        this.op.hide();
+        this.router.navigateByUrl("/login", {replaceUrl: true});
+      }
     },
-    {
-      label: "系统管理"
-    },
-    {
-      label: "应用管理",
-      children: [
-        {label: "Android 管理"},
-        {label: "WEB 管理", children: [{label: "h5管理"}]}
-      ]
-    }
   ];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.userService.getInitializeUserService()
       .subscribe(e => {
-      console.log(e);
-    }, e => console.log(e), () => {console.log("complete");});
+        console.log(e);
+      }, e => console.log(e), () => {
+        console.log("complete");
+      });
   }
 }

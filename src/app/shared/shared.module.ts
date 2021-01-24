@@ -15,6 +15,8 @@ import {routeReuseStrategies} from "./route-reuse-strategies";
 import {RouterModule} from "@angular/router";
 import {VarDirective} from "./directives/var.directive";
 import {UserService} from "./services/user.service";
+import {OverlayPanelModule} from "primeng/overlaypanel";
+import {MenuModule} from "primeng/menu";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import {UserService} from "./services/user.service";
     ButtonModule,
     InputTextModule,
     AvatarModule,
+    OverlayPanelModule,
+    MenuModule,
   ],
   exports: [
     FormsModule,
@@ -41,6 +45,8 @@ import {UserService} from "./services/user.service";
     ButtonModule,
     InputTextModule,
     AvatarModule,
+    OverlayPanelModule,
+    MenuModule,
   ],
 
 })

@@ -17,9 +17,19 @@
 
 }
 .header {
+  padding: 0 24px;
+  box-sizing: border-box;
   height: 60px;
   background-color: var(--color-white);
   border-bottom: 1px solid var(--border-color);
 }
-.outlet {
+.overlay-panel {
+  &::ng-deep {
+    .p-overlaypanel-content {
+      padding: 0;
+    }
+    .p-menu {
+      border: none;
+    }
+  }
 }
