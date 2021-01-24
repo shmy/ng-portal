@@ -1,19 +1,21 @@
-<form [formGroup]="formGroup" class="card" (ngSubmit)="handleSubmit()">
-  <div class="p-field p-grid">
-    <div class="p-col">
-      <label>
-        <input formControlName="username" type="text" pInputText>
-      </label>
+<div data-flex="dir:left main:center cross:center" class="login">
+  <div data-flex="dir:left" class="login-wrap">
+    <div data-flex-box="1" data-flex="dir:left main:center cross:center" class="brand">
+      <img src="assets/images/login-brand.png" alt="">
+    </div>
+    <div data-flex-box="1" data-flex="dir:left main:center cross:center">
+      <form [formGroup]="formGroup" class="form-wrap" (ngSubmit)="handleSubmit()">
+        <div class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input class="form-control" placeholder="请输入用户名" formControlName="username" type="text" pInputText>
+        </div>
+        <div class="p-input-icon-left">
+          <i class="pi pi-key"></i>
+          <input class="form-control" placeholder="请输入密码" formControlName="password" type="password" pInputText>
+        </div>
+        <button [disabled]="isDisabled" pButton type="submit" [label]="submitLabel"></button>
+      </form>
     </div>
   </div>
-  <div class="p-field p-grid">
-    <div class="p-col">
-      <label>
-        <input formControlName="password" type="password" pInputText>
-      </label>
-    </div>
+</div>
 
-    <button pButton type="submit" label="登录"></button>
-  </div>
-
-</form>

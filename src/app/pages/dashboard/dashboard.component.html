@@ -1,18 +1,9 @@
 <section data-flex="dir:left" class="dashboard">
-  <section class="sidebar">
-    <div class="logo">
-    </div>
-  </section>
+  <app-sidebar></app-sidebar>
   <section data-flex-box="1" data-flex="dir:top" class="content">
-    <header class="header" data-flex="dir:left cross:center">
-      <div data-flex-box="1"></div>
-      <p-avatar (click)="op.toggle($event)" label="P" shape="circle"></p-avatar>
-    </header>
+    <app-header></app-header>
     <main data-flex-box="1" class="outlet">
       <router-outlet></router-outlet>
     </main>
   </section>
 </section>
-<p-overlayPanel class="overlay-panel" #op>
-  <p-menu [model]="profileMenus"></p-menu>
-</p-overlayPanel>

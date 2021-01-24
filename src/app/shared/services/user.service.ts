@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin, Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
+import {delay, map} from "rxjs/operators";
 import { mock } from "mockjs";
 
 interface LoginParams {
@@ -31,7 +31,9 @@ export class UserService {
   userLoginService(body: LoginParams): Observable<LoginResult> {
     return of(mock({
       token: "@guid"
-    }));
+    })).pipe(
+      delay(500),
+    );
   }
 
   getInitializeUserService(): Observable<UserInfo> {
@@ -55,7 +57,9 @@ export class UserService {
     return of(mock({
       username: "@cname",
       token: "@guid"
-    }));
+    })).pipe(
+      delay(500),
+    );
   }
 
   getUserAccessCodeService(): Observable<string[]> {

@@ -1,8 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../shared/services/user.service";
-import {MenuItem} from "primeng/api";
-import {OverlayPanel} from "primeng/overlaypanel";
 import {Router} from "@angular/router";
+import {SidebarService} from "../../modules/sidebar/sidebar.service";
 
 @Component({
   selector: "app-dashboard",
@@ -10,27 +9,8 @@ import {Router} from "@angular/router";
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild("op", {static: true}) private op!: OverlayPanel;
-  profileMenus: MenuItem[] = [
-    {
-      label: "个人中心",
-      icon: "pi pi-fw pi-user",
-      command: () => {
-        this.op.hide();
-        this.router.navigateByUrl("/profile", {replaceUrl: false});
-      }
-    },
-    {
-      label: "退出登录",
-      icon: "pi pi-fw pi-plus",
-      command: () => {
-        this.op.hide();
-        this.router.navigateByUrl("/login", {replaceUrl: true});
-      }
-    },
-  ];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private sidebarService: SidebarService) {
   }
 
   ngOnInit(): void {
@@ -41,4 +21,5 @@ export class DashboardComponent implements OnInit {
         console.log("complete");
       });
   }
+
 }
