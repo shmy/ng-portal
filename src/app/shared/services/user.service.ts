@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin, Observable, of} from "rxjs";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import { mock } from "mockjs";
 
 interface LoginParams {
@@ -29,7 +29,9 @@ export class UserService {
   }
 
   userLoginService(body: LoginParams): Observable<LoginResult> {
-    return this.http.post<LoginResult>("/login", body);
+    return of(mock({
+      token: "@guid"
+    }));
   }
 
   getInitializeUserService(): Observable<UserInfo> {
@@ -38,7 +40,6 @@ export class UserService {
       this.getUserAccessCodeService()
     ])
       .pipe(
-        tap(() => console.log(123)),
         map(([userInfo, accessCodeList]) => {
           const accessCodeMap: AccessCodeMap = {};
           (accessCodeList as string[]).forEach(accessCode => {

@@ -1,9 +1,12 @@
-<section class="dashboard">
+<section data-flex="dir:left" class="dashboard">
   <section class="sidebar">
     <div class="logo">
     </div>
   </section>
-  <section class="outlet">
-    <router-outlet></router-outlet>
+  <section data-flex-box="1" data-flex="dir:top" class="content">
+    <header class="header"></header>
+    <main data-flex-box="1" class="outlet">
+      <router-outlet></router-outlet>
+    </main>
   </section>
 </section>

@@ -7,6 +7,7 @@ import {LandingComponent} from "./pages/landing/landing.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {InputTextModule} from "primeng/inputtext";
+import {AvatarModule} from "primeng/avatar";
 import {LogService} from "./services/log.service";
 import {httpInterceptorProviders} from "./interceptors";
 import {HttpClientModule} from "@angular/common/http";
@@ -30,6 +31,7 @@ import {UserService} from "./services/user.service";
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    AvatarModule,
   ],
   exports: [
     FormsModule,
@@ -38,6 +40,7 @@ import {UserService} from "./services/user.service";
     HttpClientModule,
     ButtonModule,
     InputTextModule,
+    AvatarModule,
   ],
 
 })
