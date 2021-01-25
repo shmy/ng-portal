@@ -5,13 +5,4 @@
   background-color: var(--color-white);
   border-bottom: 1px solid var(--border-color);
 }
-.overlay-panel {
-  &::ng-deep {
-    .p-overlaypanel-content {
-      padding: 0;
-    }
-    .p-menu {
-      border: none;
-    }
-  }
-}
+

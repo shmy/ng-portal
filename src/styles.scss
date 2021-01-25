@@ -2,24 +2,34 @@
 html, body {
   margin: 0;
   padding: 0;
-  //height: 100%;
-  //width: 100%;
-  //overflow: hidden;
 }
+
 @import "~flex.css/dist/data-flex.css";
-[data-flex="dir:left"]>[data-flex-box] {
+[data-flex="dir:left"] > [data-flex-box] {
   width: 0;
 }
-[data-flex="dir:top"]>[data-flex-box] {
+
+[data-flex="dir:top"] > [data-flex-box] {
   height: 0;
 }
+
 .pointer {
   cursor: pointer;
 }
+
 :root {
   --color-white: #ffffff;
   --color-white1: #f5f5f5;
   --color-white2: rgba(255, 255, 255, .2);
   --color-dark-grey: #343a40;
   --border-color: #dee2e6;
+}
+
+.overlay-panel {
+  .p-overlaypanel-content {
+    padding: 0 !important;
+  }
+  .p-menu {
+    border: none;
+  }
 }
