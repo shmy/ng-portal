@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {SidebarService} from "../sidebar/sidebar.service";
 import * as screenfull from "screenfull";
 
+const defaultFontSize = 14;
+const defaultScale = 3;
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -31,6 +33,8 @@ export class HeaderComponent implements OnInit {
       }
     },
   ];
+  display = false;
+  scale = defaultScale;
   constructor(private sidebarService: SidebarService, private router: Router) { }
 
   ngOnInit(): void {
@@ -47,5 +51,10 @@ export class HeaderComponent implements OnInit {
     if (screenfull.isEnabled) {
       screenfull.toggle();
     }
+  }
+
+  handleRate(): void {
+    const gapSize = defaultScale - this.scale;
+    document.documentElement.style.fontSize = `${defaultFontSize - gapSize}px`;
   }
 }

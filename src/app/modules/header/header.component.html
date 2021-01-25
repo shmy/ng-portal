@@ -10,3 +10,14 @@
 <p-overlayPanel appendTo="body" styleClass="overlay-panel" #op>
   <p-menu class="overlay-panel-menu" [model]="profileMenus"></p-menu>
 </p-overlayPanel>
+<div (click)="display = true" class="config-button" data-flex="dir:left main:center cross:center">
+  <i class="pi pi-cog"></i>
+</div>
+<p-sidebar [(visible)]="display" position="right">
+  <h3>组件缩放</h3>
+  <p-rating [(ngModel)]="scale"
+            iconOnClass="pi pi-circle-on"
+            iconOffClass="pi pi-circle-off"
+            [cancel]="false"
+            (onRate)="handleRate()"></p-rating>
+</p-sidebar>

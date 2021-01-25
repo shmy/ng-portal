@@ -6,7 +6,7 @@
 [x] request/response拦截
 [ ] 面包屑
 [ ] lucySheet
-[ ] 全屏
+[x] 全屏
 [ ] 异常收集器
 [ ] 主题定制
 [ ] 图表

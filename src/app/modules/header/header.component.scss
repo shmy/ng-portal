@@ -1,22 +1,39 @@
 .header {
   padding: 0 24px;
   box-sizing: border-box;
-  height: 60px;
+  height: 4rem;
   background-color: var(--color-white);
   border-bottom: 1px solid var(--border-color);
 }
 
 .action-item {
-  margin-right: 10px;
+  margin-right: .5rem;
   position: relative;
-  height: 32px;
-  width: 32px;
-  border-radius: 5px;
+  height: 2.1rem;
+  width: 2.1rem;
+  border-radius: .5rem;
   cursor: pointer;
   >.pi {
-    font-size: 20px;
+    font-size: 1.4rem;
   }
   &:hover {
     background-color: #dee2e6;
+  }
+}
+.config-button {
+  height: 4rem;
+  width: 4rem;
+  background-color: var(--primary-color);
+  position: fixed;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+  transform: translateY(-50%);
+  box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+  >.pi {
+    color: var(--color-white);
+    font-size: 2rem;
   }
 }

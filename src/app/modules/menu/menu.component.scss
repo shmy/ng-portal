@@ -6,8 +6,8 @@
 }
 
 .menu-item, .menu-sub {
-  min-height: 40px;
-  line-height: 40px;
+  min-height: 3rem;
+  line-height: 3rem;
   cursor: pointer;
   background-color: transparent;
   transition: color .3s, background-color .3s;
@@ -21,10 +21,10 @@
   }
 }
 .menu-item-title-wrap {
-  padding-right: 24px;
+  padding-right: 1rem;
 }
 .menu-item-title {
-  text-indent: 10px;
+  text-indent: .7rem;
 }
 .menu-sub-content {
   transition: height .3s;

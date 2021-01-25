@@ -40,6 +40,6 @@ export class MenuComponent {
     return isMatch;
   }
   getPaddingLeft(level: number): string {
-    return level * 16 + 24 + "px";
+    return level + 1 + "rem";
   }
 }

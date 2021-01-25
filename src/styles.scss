@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-white: #ffffff;
+  --color-white1: #f5f5f5;
+  --color-white2: rgba(255, 255, 255, .2);
+  --color-white7: rgba(255, 255, 255, .7);
+  --color-dark-grey: #343a40;
+  --border-color: #dee2e6;
+}
+
 html, body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family);
+  font-size: 14px;
 }
 
 @import "~flex.css/dist/data-flex.css";
@@ -15,15 +27,6 @@ html, body {
 
 .pointer {
   cursor: pointer;
-}
-
-:root {
-  --color-white: #ffffff;
-  --color-white1: #f5f5f5;
-  --color-white2: rgba(255, 255, 255, .2);
-  --color-white7: rgba(255, 255, 255, .7);
-  --color-dark-grey: #343a40;
-  --border-color: #dee2e6;
 }
 
 .overlay-panel {

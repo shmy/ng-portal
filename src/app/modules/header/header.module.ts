@@ -5,6 +5,9 @@ import {AvatarModule} from "primeng/avatar";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {MenuModule} from "primeng/menu";
 import {HeaderService} from "./header.service";
+import {SidebarModule} from "primeng/sidebar";
+import {RatingModule} from "primeng/rating";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import {HeaderService} from "./header.service";
     CommonModule,
     AvatarModule,
     OverlayPanelModule,
-    MenuModule
+    MenuModule,
+    SidebarModule,
+    RatingModule,
+    FormsModule
   ],
   exports: [HeaderComponent],
   providers: [HeaderService]
