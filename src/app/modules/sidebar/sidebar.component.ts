@@ -90,4 +90,10 @@ export class SidebarComponent implements OnInit {
   handleMaskClick(): void {
     this.sidebarService.toggle();
   }
+
+  handleNavigate(path: string): void {
+    if (window.innerWidth <= 991) {
+      this.sidebarService.close();
+    }
+  }
 }

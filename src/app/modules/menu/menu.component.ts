@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 
@@ -33,6 +33,7 @@ export class MenuComponent {
     },
   ];
   currentPath = "";
+  @Output() onNavigate = new EventEmitter<string>();
   constructor(private router: Router) {
     this.currentPath = this.router.url;
     this.router.events.pipe(
@@ -41,6 +42,9 @@ export class MenuComponent {
       .subscribe((event) => {
         this.currentPath = (event as NavigationEnd).url;
       });
+  }
+  handleJump(path: string): void {
+    this.onNavigate.emit(path);
   }
   getIsMatch(menu: IMenu): boolean {
     if (menu.open !== undefined) {

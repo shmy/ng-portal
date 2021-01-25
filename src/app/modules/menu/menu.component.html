@@ -2,7 +2,7 @@
 <ng-template #menuTpl let-menus="menus" let-level="level">
   <ul class="menu">
     <ng-container *ngFor="let menu of menus">
-      <li class="menu-item" routerLinkActive="active" [routerLink]="menu.path" *ngIf="!menu.items">
+      <li class="menu-item" routerLinkActive="active" (click)="handleJump(menu.path)" [routerLink]="menu.path" *ngIf="!menu.items">
         <div class="menu-item-title-wrap" [style.paddingLeft]="getPaddingLeft(level)" data-flex="dir:left cross:center">
           <i class="pi pi-user" *ngIf="level === 0"></i>
           <span data-flex-box="1" class="menu-item-title">{{menu.name}}</span>
@@ -12,7 +12,7 @@
         <div class="menu-item-title-wrap" [style.paddingLeft]="getPaddingLeft(level)" (click)="menu.open = !menu.open" data-flex="dir:left cross:center">
           <i class="pi pi-user"></i>
           <span data-flex-box="1" class="menu-item-title">{{menu.name}}</span>
-          <i class="pi" [class.pi-angle-up]="menu.open" [class.pi-angle-down]="!menu.open"></i>
+          <i class="pi" [class.pi-angle-up]="getIsMatch(menu)" [class.pi-angle-down]="!getIsMatch(menu)"></i>
         </div>
         <div class="menu-sub-content" [class.open]="getIsMatch(menu)">
           <ng-container *ngTemplateOutlet="menuTpl; context: {menus: menu.items, level: level + 1}"></ng-container>
