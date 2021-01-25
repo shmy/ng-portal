@@ -1,8 +1,8 @@
 [ ] 动态路由/权限拦截
 [ ] 动态菜单/权限拦截
 [x] 全局Context UserInfo
-[ ] qier-progress
-[ ] 登录/登出
+[x] loading-progress
+[x] 登录/登出
 [x] request/response拦截
 [ ] 面包屑
 [ ] lucySheet

@@ -15,6 +15,8 @@ import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
+import {LoadingBarRouterModule} from "@ngx-loading-bar/router";
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<I18nDefinition> {
@@ -30,6 +32,8 @@ class CustomTranslateLoader implements TranslateLoader {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
