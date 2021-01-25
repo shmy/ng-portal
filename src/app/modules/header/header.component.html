@@ -1,6 +1,10 @@
 <header class="header" data-flex="dir:left cross:center">
   <i (click)="handleToggleSidebar()" class="pointer pi pi-bars"></i>
   <div data-flex-box="1"></div>
+  <div class="action-item" data-flex="dir:left main:center cross:center">
+    <i (click)="handleToggleFullScreen()" class="pi" [class.pi-window-maximize]="!isFullScreen"
+       [class.pi-window-minimize]="isFullScreen"></i>
+  </div>
   <p-avatar class="pointer" (click)="op.toggle($event)" label="P" shape="circle"></p-avatar>
 </header>
 <p-overlayPanel appendTo="body" styleClass="overlay-panel" #op>

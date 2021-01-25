@@ -6,3 +6,17 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.action-item {
+  margin-right: 10px;
+  position: relative;
+  height: 32px;
+  width: 32px;
+  border-radius: 5px;
+  cursor: pointer;
+  >.pi {
+    font-size: 20px;
+  }
+  &:hover {
+    background-color: #dee2e6;
+  }
+}

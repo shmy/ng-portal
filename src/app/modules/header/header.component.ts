@@ -3,6 +3,7 @@ import {MenuItem} from "primeng/api";
 import {OverlayPanel} from "primeng/overlaypanel";
 import {Router} from "@angular/router";
 import {SidebarService} from "../sidebar/sidebar.service";
+import * as screenfull from "screenfull";
 
 @Component({
   selector: "app-header",
@@ -11,6 +12,7 @@ import {SidebarService} from "../sidebar/sidebar.service";
 })
 export class HeaderComponent implements OnInit {
   @ViewChild("op", {static: true}) private op!: OverlayPanel;
+  isFullScreen = false;
   profileMenus: MenuItem[] = [
     {
       label: "个人中心",
@@ -32,9 +34,18 @@ export class HeaderComponent implements OnInit {
   constructor(private sidebarService: SidebarService, private router: Router) { }
 
   ngOnInit(): void {
+    (screenfull as any).onchange((s: any) => {
+      this.isFullScreen = (screenfull as any).isFullscreen;
+    });
   }
 
   handleToggleSidebar(): void {
     this.sidebarService.toggle();
+  }
+
+  handleToggleFullScreen(): void {
+    if (screenfull.isEnabled) {
+      screenfull.toggle();
+    }
   }
 }
