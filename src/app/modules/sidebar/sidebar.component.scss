@@ -1,13 +1,37 @@
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, .3);
+  display: none;
+
+  @media screen and (max-width: 991px) {
+    &.is-not-collapsed {
+      display: block;
+    }
+  }
+}
 .sidebar {
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   height: 100%;
-  transition: width .3s;
+  width: 240px;
+  transition: transform .3s;
   background-color: var(--color-dark-grey);
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  @media screen and (max-width: 991px) {
+    z-index: 999;
+  }
+  &.is-collapsed {
+    transform: translateX(-100%);
+  }
 
   .logo {
     height: 60px;
     border-bottom: 1px solid var(--color-white2);
   }
-
 }

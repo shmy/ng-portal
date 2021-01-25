@@ -10,15 +10,13 @@ import {SidebarService} from "../../modules/sidebar/sidebar.service";
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router, private sidebarService: SidebarService) {
+  constructor(private userService: UserService, private router: Router, public sidebarService: SidebarService) {
   }
 
   ngOnInit(): void {
     this.userService.getInitializeUserService()
       .subscribe(e => {
         console.log(e);
-      }, e => console.log(e), () => {
-        console.log("complete");
       });
   }
 

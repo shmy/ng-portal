@@ -3,4 +3,14 @@
   width: 100vw;
   background-color: var(--color-white1);
 }
-
+.content {
+  height: 100%;
+  margin-left: 240px;
+  transition: margin-left .3s;
+  @media screen and (max-width: 991px) {
+    margin-left: 0;
+  }
+  &.is-side-collapsed {
+    margin-left: 0;
+  }
+}

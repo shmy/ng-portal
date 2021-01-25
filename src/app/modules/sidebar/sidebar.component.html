@@ -1,4 +1,5 @@
-<section class="sidebar" [style.width]="sidebarWidth">
+<div class="mask" (click)="handleMaskClick()" [class.is-not-collapsed]="!sidebarService.isCollapsed"></div>
+<section class="sidebar" [class.is-collapsed]="sidebarService.isCollapsed">
   <div class="logo">
   </div>
 </section>

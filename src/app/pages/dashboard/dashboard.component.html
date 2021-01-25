@@ -1,6 +1,6 @@
-<section data-flex="dir:left" class="dashboard">
+<section class="dashboard">
   <app-sidebar></app-sidebar>
-  <section data-flex-box="1" data-flex="dir:top" class="content">
+  <section data-flex="dir:top" class="content" [class.is-side-collapsed]="sidebarService.isCollapsed">
     <app-header></app-header>
     <main data-flex-box="1" class="outlet">
       <router-outlet></router-outlet>

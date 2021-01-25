@@ -12,7 +12,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  get sidebarWidth(): string {
-    return this.sidebarService.isCollapsed ? "0" : "240px";
+
+  handleMaskClick(): void {
+    this.sidebarService.toggle();
   }
 }
