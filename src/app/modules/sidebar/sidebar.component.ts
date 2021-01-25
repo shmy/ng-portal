@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {SidebarService} from "./sidebar.service";
-import {MenuItem} from "primeng/api";
+import {IMenu} from "../menu/menu.component";
 
 @Component({
   selector: "app-sidebar",
@@ -8,79 +8,22 @@ import {MenuItem} from "primeng/api";
   styleUrls: ["./sidebar.component.scss"]
 })
 export class SidebarComponent implements OnInit {
-  items: MenuItem[] = [
+  menus: IMenu[] = [
+    {path: "/dashboard/authority/role", name: "角色管理"},
+    {path: "/dashboard/authority/user", name: "人员管理"},
     {
-      label: "File",
-      icon: "pi pi-pw pi-file",
-      items: [{
-        label: "New",
-        icon: "pi pi-fw pi-plus",
-        items: [
-          {label: "User", icon: "pi pi-fw pi-user-plus"},
-          {label: "Filter", icon: "pi pi-fw pi-filter"}
-        ]
-      },
-        {label: "Open", icon: "pi pi-fw pi-external-link"},
-        {separator: true},
-        {label: "Quit", icon: "pi pi-fw pi-times"}
+      path: "/dashboard/system", name: "系统管理", items: [
+        {path: "/dashboard/system/params", name: "参数管理"},
       ]
     },
     {
-      label: "Edit",
-      icon: "pi pi-fw pi-pencil",
-      items: [
-        {label: "Delete", icon: "pi pi-fw pi-trash"},
-        {label: "Refresh", icon: "pi pi-fw pi-refresh"}
+      path: "/dashboard/other", name: "其他管理", items: [
+        {path: "/dashboard/other/other", name: "其他"},
+        {path: "/dashboard/other/other1", name: "其他下级", items: [
+            {path: "/dashboard/other/other1/other1", name: "没有其他"},
+          ]},
       ]
     },
-    {
-      label: "Help",
-      icon: "pi pi-fw pi-question",
-      items: [
-        {
-          label: "Contents",
-          icon: "pi pi-pi pi-bars"
-        },
-        {
-          label: "Search",
-          icon: "pi pi-pi pi-search",
-          items: [
-            {
-              label: "Text",
-              items: [
-                {
-                  label: "Workspace"
-                }
-              ]
-            },
-            {
-              label: "User",
-              icon: "pi pi-fw pi-file",
-            }
-          ]}
-      ]
-    },
-    {
-      label: "Actions",
-      icon: "pi pi-fw pi-cog",
-      items: [
-        {
-          label: "Edit",
-          icon: "pi pi-fw pi-pencil",
-          items: [
-            {label: "Save", icon: "pi pi-fw pi-save"},
-            {label: "Update", icon: "pi pi-fw pi-save"},
-          ]
-        },
-        {
-          label: "Other",
-          icon: "pi pi-fw pi-tags",
-          items: [
-            {label: "Delete", icon: "pi pi-fw pi-minus"}
-          ]
-        }
-      ]
-    }
   ];
   constructor(public sidebarService: SidebarService) { }
 
