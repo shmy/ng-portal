@@ -1,0 +1,16 @@
+<ng-container *ngTemplateOutlet="menuTpl; context: {menus: menus}"></ng-container>
+<ng-template #menuTpl let-menus="menus">
+  <ul class="menu">
+    <ng-container *ngFor="let menu of menus">
+      <li class="menu-item" *ngIf="!menu.items">
+        <div class="menu-item-title" data-flex="dir:left cross:center" routerLinkActive="active" [routerLink]="menu.path"><i class="pi pi-user"></i><span class="menu-item-title">{{menu.name}}</span></div>
+      </li>
+      <li class="menu-sub" *ngIf="menu.items">
+        <div class="menu-item-title" (click)="menu.open = !menu.open" data-flex="dir:left main:justify cross:center"><span class="menu-item-title">{{menu.name}}</span><i class="pi pi-user"></i></div>
+        <div class="menu-sub-content" [class.open]="getIsMatch(menu)">
+          <ng-container *ngTemplateOutlet="menuTpl; context: {menus: menu.items}"></ng-container>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</ng-template>

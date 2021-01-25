@@ -20,6 +20,7 @@
   top: 0;
   height: 100%;
   width: 240px;
+  overflow-y: auto;
   transition: transform .3s;
   background-color: var(--color-dark-grey);
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
@@ -33,5 +34,13 @@
   .logo {
     height: 60px;
     border-bottom: 1px solid var(--color-white2);
+  }
+}
+.panel-menu {
+  &::ng-deep {
+    .p-panelmenu .p-panelmenu-panel .p-panelmenu-header > a {
+      border-radius: 0!important;
+      border: none !important;
+    }
   }
 }
