@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {forkJoin, Observable, of} from "rxjs";
 import {delay, map, tap} from "rxjs/operators";
 import { mock } from "mockjs";
-import {IMenu} from "../../modules/menu/menu.component";
+import {IMenu} from "../../components/menu/menu.component";
 import {AccessCode} from "../constants/accessCode";
 
 interface LoginParams {
@@ -24,23 +24,28 @@ interface UserInfo {
 const getMenuAllIn = (): IMenu[] => {
   return [
     {
-      path: "/dashboard/authority/role",
-      name: "角色管理",
-      accessCodeList: [AccessCode.AUTHORITY_ROLE_LOOKUP]
-    },
-    {
-      path: "/dashboard/authority/user",
-      name: "人员管理",
-      accessCodeList: [AccessCode.AUTHORITY_USER_LOOKUP]
-    },
-    {
-      path: "/dashboard/system",
-      name: "系统管理",
+      path: "/dashboard/authority",
+      name: "用户管理",
       items: [
         {
-          path: "/dashboard/system/params",
-          name: "参数管理",
-          accessCodeList: [AccessCode.SYSTEM_PARAMS_LOOKUP]
+          path: "/dashboard/authority/role",
+          name: "角色管理",
+          accessCodeList: [AccessCode.AUTHORITY_ROLE_LOOKUP]
+        },
+        {
+          path: "/dashboard/authority/user",
+          name: "人员管理",
+          accessCodeList: [AccessCode.AUTHORITY_USER_LOOKUP]
+        }
+      ]
+    },
+    {
+      path: "/dashboard/data-view",
+      name: "数据展示",
+      items: [
+        {
+          path: "/dashboard/data-view/table",
+          name: "表格"
         }
       ]
     }
@@ -141,8 +146,7 @@ export class UserService {
   getUserAccessCodeService(): Observable<string[]> {
     return of(mock([
       "AUTHORITY_ROLE_LOOKUP",
-      "AUTHORITY_USER_LOOKUP",
-      "SYSTEM_PARAMS_LOOKUP",
+      "AUTHORITY_USER_LOOKUP"
     ]));
   }
 }

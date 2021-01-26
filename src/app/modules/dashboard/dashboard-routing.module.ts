@@ -9,8 +9,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {path: "authority", loadChildren: () => import("./authority/authority.module").then(m => m.AuthorityModule)},
-      {path: "system", loadChildren: () => import("./authority/authority.module").then(m => m.AuthorityModule)},
-      {path: "other", loadChildren: () => import("./authority/authority.module").then(m => m.AuthorityModule)}
+      {path: "data-view", loadChildren: () => import("./data-view/data-view.module").then(m => m.DataViewModule)},
     ]
   },
   {path: "**", component: NotFoundComponent}
