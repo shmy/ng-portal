@@ -17,6 +17,7 @@ import {fromPromise} from "rxjs/internal-compatibility";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
 import {LoadingBarRouterModule} from "@ngx-loading-bar/router";
+import {UserService} from "./shared/services/user.service";
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<I18nDefinition> {
@@ -49,7 +50,7 @@ export class AppModule {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private translateService: TranslateService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {
     const defaultLang = window?.navigator?.language || LangEnum.ZH_CN;
     this.activatedRoute.queryParams.subscribe(({lang}) => {

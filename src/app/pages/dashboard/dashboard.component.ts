@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../shared/services/user.service";
-import {Router} from "@angular/router";
 import {SidebarService} from "../../modules/sidebar/sidebar.service";
 
 @Component({
@@ -8,16 +7,9 @@ import {SidebarService} from "../../modules/sidebar/sidebar.service";
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor(private userService: UserService, private router: Router, public sidebarService: SidebarService) {
+  constructor(private userService: UserService, public sidebarService: SidebarService) {
+    userService.getInitializeUserService().subscribe();
   }
-
-  ngOnInit(): void {
-    this.userService.getInitializeUserService()
-      .subscribe(e => {
-        console.log(e);
-      });
-  }
-
 }

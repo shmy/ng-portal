@@ -1,8 +1,10 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin, Observable, of} from "rxjs";
-import {delay, map} from "rxjs/operators";
+import {delay, map, tap} from "rxjs/operators";
 import { mock } from "mockjs";
+import {IMenu} from "../../modules/menu/menu.component";
+import {AccessCode} from "../constants/accessCode";
 
 interface LoginParams {
   username: string;
@@ -13,19 +15,89 @@ interface LoginResult {
   token: string;
 }
 
-type AccessCodeMap = { [key: string]: boolean };
-
+export type AccessCodeMap = { [key: string]: boolean };
+export type UserProfile = {user: UserInfo, menus: IMenu[] };
 interface UserInfo {
   username?: string;
   accessCodeMap?: AccessCodeMap;
 }
-
+const getMenuAllIn = (): IMenu[] => {
+  return [
+    {
+      path: "/dashboard/authority/role",
+      name: "角色管理",
+      accessCodeList: [AccessCode.AUTHORITY_ROLE_LOOKUP]
+    },
+    {
+      path: "/dashboard/authority/user",
+      name: "人员管理",
+      accessCodeList: [AccessCode.AUTHORITY_USER_LOOKUP]
+    },
+    {
+      path: "/dashboard/system",
+      name: "系统管理",
+      items: [
+        {
+          path: "/dashboard/system/params",
+          name: "参数管理",
+          accessCodeList: [AccessCode.SYSTEM_PARAMS_LOOKUP]
+        }
+      ]
+    }
+  ];
+};
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
-
+  private $profile: UserProfile = {user: {}, menus: []};
+  get profile(): UserProfile {
+    return this.$profile;
+  }
+  get userInfo(): UserInfo{
+    return this.profile.user;
+  }
+  get userMenus(): IMenu[] {
+    return this.profile.menus;
+  }
   constructor(private http: HttpClient) {
+  }
+  private formatMenu(menus: IMenu[], accessCodeMap?: AccessCodeMap): IMenu[] {
+    const result: IMenu[] = [];
+    for (const menu of menus) {
+      if (menu.items) {
+        menu.items = this.formatMenu(menu.items, accessCodeMap);
+        if (menu.items.length > 0) {
+          // menu.open = false;
+          result.push(menu);
+        }
+      } else {
+        if (this.hasAccessCodes(accessCodeMap, menu.accessCodeList)) {
+          result.push(menu);
+        }
+      }
+    }
+    return result;
+  }
+  setUpProfile(user: UserInfo): void {
+    this.$profile = {
+      user,
+      menus: this.formatMenu(getMenuAllIn(), user.accessCodeMap)
+    };
+  }
+  hasAccessCodes(accessCodeMap?: AccessCodeMap, requiredAccessCodeList?: string[]): boolean {
+    if (!requiredAccessCodeList) {
+      return true;
+    }
+    if (!accessCodeMap) {
+      return false;
+    }
+    for (const code of requiredAccessCodeList) {
+      if (!accessCodeMap[code]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   userLoginService(body: LoginParams): Observable<LoginResult> {
@@ -49,6 +121,9 @@ export class UserService {
           });
           userInfo.accessCodeMap = accessCodeMap;
           return userInfo;
+        }),
+        tap(userInfo => {
+          this.setUpProfile(userInfo);
         })
       );
   }
@@ -64,10 +139,9 @@ export class UserService {
 
   getUserAccessCodeService(): Observable<string[]> {
     return of(mock([
-      "DASHBOARD_LOOKUP",
-      "POST_LOOKUP",
-      "APPLICATION_LOOKUP",
-      "DASHBOARD_LOGOUT",
+      "AUTHORITY_ROLE_LOOKUP",
+      "AUTHORITY_USER_LOOKUP",
+      "SYSTEM_PARAMS_LOOKUP",
     ]));
   }
 }

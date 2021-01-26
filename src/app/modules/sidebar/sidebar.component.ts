@@ -1,6 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {SidebarService} from "./sidebar.service";
 import {IMenu} from "../menu/menu.component";
+import {AccessCode} from "../../shared/constants/accessCode";
+import {AccessCodeMap, UserService} from "../../shared/services/user.service";
+
+
 
 @Component({
   selector: "app-sidebar",
@@ -8,28 +12,11 @@ import {IMenu} from "../menu/menu.component";
   styleUrls: ["./sidebar.component.scss"]
 })
 export class SidebarComponent implements OnInit {
-  menus: IMenu[] = [
-    {path: "/dashboard/authority/role", name: "角色管理"},
-    {path: "/dashboard/authority/user", name: "人员管理"},
-    {
-      path: "/dashboard/system", name: "系统管理", items: [
-        {path: "/dashboard/system/params", name: "参数管理"},
-      ]
-    },
-    {
-      path: "/dashboard/other", name: "其他管理", items: [
-        {path: "/dashboard/other/other", name: "其他"},
-        {path: "/dashboard/other/other1", name: "其他下级", items: [
-            {path: "/dashboard/other/other1/other1", name: "没有其他"},
-          ]},
-      ]
-    },
-  ];
-  constructor(public sidebarService: SidebarService) { }
+
+  constructor(public sidebarService: SidebarService, public userService: UserService) { }
 
   ngOnInit(): void {
   }
-
   handleMaskClick(): void {
     this.sidebarService.toggle();
   }

@@ -2,5 +2,5 @@
 <section class="sidebar" [class.is-collapsed]="sidebarService.isCollapsed">
   <div class="logo">
   </div>
-  <app-menu [menus]="menus" (onNavigate)="handleNavigate($event)"></app-menu>
+  <app-menu [menus]="userService.userMenus" (onNavigate)="handleNavigate($event)"></app-menu>
 </section>

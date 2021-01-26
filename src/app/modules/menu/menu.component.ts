@@ -5,6 +5,7 @@ import {filter} from "rxjs/operators";
 export interface IMenu {
   name: string;
   path: string;
+  accessCodeList?: string[];
   open?: boolean;
   items?: IMenu[];
 }
