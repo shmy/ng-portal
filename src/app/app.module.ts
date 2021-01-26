@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {Inject, NgModule} from "@angular/core";
+import {APP_INITIALIZER, Inject, NgModule} from "@angular/core";
 
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
@@ -43,7 +43,18 @@ class CustomTranslateLoader implements TranslateLoader {
     }),
     SharedModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userService: UserService) => {
+        return () => new Promise((resolve, reject) => {
+          userService.getInitializeUserService().subscribe(resolve, reject);
+        });
+      },
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

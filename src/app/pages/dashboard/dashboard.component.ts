@@ -1,5 +1,4 @@
-import {Component, OnInit} from "@angular/core";
-import {UserService} from "../../shared/services/user.service";
+import {Component} from "@angular/core";
 import {SidebarService} from "../../modules/sidebar/sidebar.service";
 
 @Component({
@@ -9,7 +8,6 @@ import {SidebarService} from "../../modules/sidebar/sidebar.service";
 })
 export class DashboardComponent {
 
-  constructor(private userService: UserService, public sidebarService: SidebarService) {
-    userService.getInitializeUserService().subscribe();
+  constructor(public sidebarService: SidebarService) {
   }
 }

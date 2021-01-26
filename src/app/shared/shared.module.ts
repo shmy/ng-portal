@@ -17,13 +17,15 @@ import {VarDirective} from "./directives/var.directive";
 import {UserService} from "./services/user.service";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {MenuModule} from "primeng/menu";
+import { ForbiddenComponent } from './pages/forbidden/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
     LandingComponent,
     LoginComponent,
     NotFoundComponent,
-    VarDirective
+    VarDirective,
+    ForbiddenComponent
   ],
   imports: [
     CommonModule,
@@ -55,8 +57,6 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        LogService,
-        UserService,
         ...httpInterceptorProviders,
         ...routeReuseStrategies,
       ]

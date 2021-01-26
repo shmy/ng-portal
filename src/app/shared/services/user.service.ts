@@ -54,13 +54,16 @@ export class UserService {
   get profile(): UserProfile {
     return this.$profile;
   }
+  set profile(profile: UserProfile) {
+    this.$profile = profile;
+  }
   get userInfo(): UserInfo{
     return this.profile.user;
   }
   get userMenus(): IMenu[] {
     return this.profile.menus;
   }
-  constructor(private http: HttpClient) {
+  constructor() {
   }
   private formatMenu(menus: IMenu[], accessCodeMap?: AccessCodeMap): IMenu[] {
     const result: IMenu[] = [];
@@ -80,10 +83,8 @@ export class UserService {
     return result;
   }
   setUpProfile(user: UserInfo): void {
-    this.$profile = {
-      user,
-      menus: this.formatMenu(getMenuAllIn(), user.accessCodeMap)
-    };
+    this.profile.user = user;
+    this.profile.menus = this.formatMenu(getMenuAllIn(), user.accessCodeMap);
   }
   hasAccessCodes(accessCodeMap?: AccessCodeMap, requiredAccessCodeList?: string[]): boolean {
     if (!requiredAccessCodeList) {

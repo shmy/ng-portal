@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
 type LogType = "error" | "warning" | "info";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class LogService {
   constructor() {
   }

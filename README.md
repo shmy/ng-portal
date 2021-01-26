@@ -1,5 +1,5 @@
-[ ] 动态路由/权限拦截
-[ ] 动态菜单/权限拦截
+[x] 动态路由/权限拦截
+[x] 动态菜单/权限拦截
 [x] 全局Context UserInfo
 [x] loading-progress
 [x] 登录/登出
@@ -12,8 +12,8 @@
 [ ] 图表
 [x] 路由分块懒加载
 [x] http 状态封装
-[ ] AuthService
-[ ] 路由守卫
+[x] AuthService
+[x] 路由守卫
 [ ] 文件上传
 [x] 路由恢复
 [ ] 动态modal

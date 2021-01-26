@@ -13,7 +13,8 @@ import {AccessCodeMap, UserService} from "../../shared/services/user.service";
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public sidebarService: SidebarService, public userService: UserService) { }
+  constructor(public sidebarService: SidebarService, public userService: UserService) {
+  }
 
   ngOnInit(): void {
   }
